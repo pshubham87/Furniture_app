@@ -11,6 +11,7 @@ import 'package:task__furnitureapp/description.dart';
 import 'package:task__furnitureapp/filter.dart';
 import 'package:task__furnitureapp/NamePage.dart';
 import 'package:task__furnitureapp/increment.dart';
+import 'package:task__furnitureapp/namepages.dart';
 import 'package:task__furnitureapp/signuppage.dart';
 import 'package:task__furnitureapp/started.dart';
 
@@ -20,7 +21,7 @@ void main(List<String> args) {
     initialRoute: '/',
     routes: {
       // When navigating to the "/" route, build the FirstScreen widget.
-      '/': (context) => MyStart(),
+      '/': (context) => Firstpages(),
       // When navigating to the "/second" route, build the SecondScreen widget.
     },
   ));

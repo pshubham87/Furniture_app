@@ -46,38 +46,20 @@ class Firstpages extends StatelessWidget {
               SizedBox(
                 height: 40,
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: Column(
+              Center(
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   children: [
-                    reusemsg("Messages", Icons.message),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    reusemsg('notification', Icons.notifications),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    reusemsg(
-                      "Accont details",
-                      Icons.person,
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    reusemsg(
-                      "Add cart",
-                      Icons.shopping_cart,
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    reusemsg(
-                      "Settings",
-                      Icons.settings,
-                    ),
-                    SizedBox(
-                      height: 8,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        reusemsg("Messages", Icons.message),
+                        reusemsg("Notification", Icons.notifications),
+                        reusemsg("Account details", Icons.account_box),
+                        reusemsg("My Purches", Icons.shopping_cart),
+                        reusemsg("Settings", Icons.settings),
+                      ],
                     ),
                   ],
                 ),
@@ -90,55 +72,14 @@ class Firstpages extends StatelessWidget {
   }
 }
 
-class secondpage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text('secondpage')),
-    );
-  }
-}
-
-class thirdpage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text('thirdpage')),
-    );
-  }
-}
-
-class fourthpage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text('fourthpage')),
-    );
-  }
-}
-
 reusemsg(
   String inputtext,
   IconData iconh,
 ) {
-  return Row(
-    children: [
-      Icon(
-        iconh,
-        color: Color.fromARGB(255, 109, 102, 102),
-      ),
-      SizedBox(
-        width: 20,
-      ),
-      MaterialButton(
-          onPressed: () {},
-          child: Text(
-            inputtext,
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
-          )),
-      SizedBox(
-        height: 10,
-      ),
-    ],
+  return ListTile(
+    leading: Icon(iconh, color: Color.fromARGB(255, 109, 102, 102)),
+    title: Text(inputtext,
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
+    onTap: () {},
   );
 }

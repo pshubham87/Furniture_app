@@ -43,7 +43,7 @@ class _notifiState extends State<notifi> {
                       physics: NeverScrollableScrollPhysics(),
                       children: [
                         SwitchListTile(
-                          title: Titleuse(),
+                          title: Titleuse("product updates"),
                           subtitle:
                               Text("furniture app,chaire , table ,and more.."),
                           value: _value,
@@ -55,7 +55,7 @@ class _notifiState extends State<notifi> {
                         ),
                         dividerreuse(),
                         SwitchListTile(
-                          title: Titleuse(),
+                          title: Titleuse("Comments"),
                           subtitle:
                               Text("furniture app,chaire , table ,and more.."),
                           value: _toggle,
@@ -67,7 +67,7 @@ class _notifiState extends State<notifi> {
                         ),
                         dividerreuse(),
                         SwitchListTile(
-                          title: Titleuse(),
+                          title: Titleuse("Offer Updates"),
                           subtitle:
                               Text("furniture app,chaire , table ,and more.."),
                           value: _change,
@@ -79,7 +79,7 @@ class _notifiState extends State<notifi> {
                         ),
                         dividerreuse(),
                         SwitchListTile(
-                          title: Titleuse(),
+                          title: Titleuse("Notifications"),
                           subtitle:
                               Text("furniture app,chaire , table ,and more.."),
                           value: _chnge,
@@ -112,9 +112,9 @@ dividerreuse() {
   );
 }
 
-Titleuse() {
+Titleuse(String title) {
   return Text(
-    "product updates",
+    title,
     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
   );
 }
