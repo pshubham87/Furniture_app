@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import 'package:task__furnitureapp/reusablebar.dart';
+import 'package:task__furnitureapp/reusable/appcolor.dart';
+import 'package:task__furnitureapp/NamePage.dart';
 
 void main() {
   runApp(const SignPage());
@@ -23,9 +24,13 @@ class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
       initialIndex: 1,
       length: 2,
       child: Scaffold(
-        appBar: appColor(),
+        appBar: appColor(
+          context,
+          "GET STARTED ",
+          () {},
+        ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50),
+          padding: EdgeInsets.all(40.0),
           child: Column(
             children: [
               Center(
@@ -96,25 +101,13 @@ class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
                       SizedBox(
                         height: 60,
                       ),
-                      SizedBox(
-                        height: 60,
-                        width: 180,
-                        child: MaterialButton(
-                          onPressed: () {},
-                          child: Text(
-                            " Sign Up",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 20,
-                            ),
-                          ),
-                          color: Colors.red[600],
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30)),
-                        ),
-                      ),
                       SizedBox(height: 30),
+                      uiButton(context, "Sign up", () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Name()),
+                        );
+                      }),
                       Text(
                         "Forgot Your Password ?",
                         style: TextStyle(
