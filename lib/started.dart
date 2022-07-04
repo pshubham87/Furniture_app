@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, sort_child_properties_last, use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:task__furnitureapp/signuppage.dart';
 
@@ -6,8 +6,13 @@ void main() {
   runApp(MyStart());
 }
 
-class MyStart extends StatelessWidget {
-  const MyStart({Key? key}) : super(key: key);
+class MyStart extends StatefulWidget {
+  @override
+  State<MyStart> createState() => _MyStartState();
+}
+
+class _MyStartState extends State<MyStart> {
+  bool ChangeButton = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,28 +59,43 @@ class MyStart extends StatelessWidget {
                 SizedBox(
                   height: 90,
                 ),
-                Container(
-                  height: 60,
-                  width: 250,
-                  child: MaterialButton(
-                    onPressed: () {
-                      Navigator.push(
+                InkWell(
+                  onTap: () async {
+                    setState(() {
+                      ChangeButton = true;
+                    });
+                    await Future.delayed(Duration(seconds: 1));
+                    await Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SignPage()),
-                      );
-                    },
-                    child: Text(
-                      " GET STARTED",
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 156, 10, 179),
-                        fontWeight: FontWeight.w900,
-                        fontSize: 20,
-                      ),
-                    ),
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
+                            builder: (context) => const SignPage()));
+                    setState(() {
+                      ChangeButton = false;
+                    });
+                  },
+                  child: AnimatedContainer(
+                    curve: Curves.linear,
+                    duration: Duration(seconds: 1),
+                    height: 60,
+                    width: ChangeButton ? 60 : 250,
+                    alignment: Alignment.center,
+                    child: ChangeButton
+                        ? Icon(
+                            Icons.done,
+                            color: Colors.black,
+                          )
+                        : Text(
+                            " GET STARTED",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 156, 10, 179),
+                              fontWeight: FontWeight.w900,
+                              fontSize: 20,
+                            ),
+                          ),
+                    decoration: BoxDecoration(
+                        color: ChangeButton ? Colors.green : Colors.white,
+                        borderRadius:
+                            BorderRadius.circular(ChangeButton ? 60 : 30)),
                   ),
                 ),
                 SizedBox(

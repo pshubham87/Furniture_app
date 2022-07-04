@@ -1,11 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:task__furnitureapp/VerificationPage.dart';
+import 'package:task__furnitureapp/reusable/appcolor.dart';
 
 class Firstpages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: appColor(context, "", () {}),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: SingleChildScrollView(
@@ -20,7 +23,8 @@ class Firstpages extends StatelessWidget {
                       child: CircleAvatar(
                         radius: (52),
                         // backgroundColor: Colors.black,
-                        backgroundImage: AssetImage("assets/images/4.jpg"),
+                        backgroundImage:
+                            AssetImage("assets/images/Profile.png"),
                       ),
                     ),
                   )
@@ -54,11 +58,24 @@ class Firstpages extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        reusemsg("Messages", Icons.message),
+                        ListTile(
+                          leading: Icon(Icons.message,
+                              color: Color.fromARGB(255, 109, 102, 102)),
+                          title: Text('Messages',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w400)),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Verification()),
+                            );
+                          },
+                        ),
                         reusemsg("Notification", Icons.notifications),
                         reusemsg("Account details", Icons.account_box),
                         reusemsg("My Purches", Icons.shopping_cart),
-                        reusemsg("Settings", Icons.settings),
+                        reusemsg("Settings ", Icons.settings),
                       ],
                     ),
                   ],
@@ -79,7 +96,8 @@ reusemsg(
   return ListTile(
     leading: Icon(iconh, color: Color.fromARGB(255, 109, 102, 102)),
     title: Text(inputtext,
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
+        style: TextStyle(
+            fontSize: 20, fontWeight: FontWeight.w400, color: Colors.black)),
     onTap: () {},
   );
 }

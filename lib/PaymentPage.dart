@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:task__furnitureapp/AtmCardpay.dart';
 import 'package:task__furnitureapp/reusable/appcolor.dart';
 import 'package:task__furnitureapp/reusepayment.dart';
 
@@ -54,15 +55,27 @@ class _PaymentPageState extends State<PaymentPage> {
                 Text('Payment Methods',
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                SizedBox(
+                  height: 30,
+                ),
                 Center(
                   child: ListView(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     children: [
-                      reusepayment(context, "Mobile Banking ", () {}),
-                      reusepayment(context, "Internet Banking ", () {}),
-                      reusepayment(context, "Sms Banking ", () {}),
-                      reusepayment(context, "Shop ", () {}),
+                      reusepayment(
+                          context, "Mobile Banking ", () {}, Icons.paypal),
+                      reusepayment(context, "Internet Banking ", () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PaymentCard()),
+                        );
+                      }, Icons.payment),
+                      reusepayment(context, "Sms Banking ", () {},
+                          Icons.wallet_outlined),
+                      reusepayment(context, "Shop ", () {},
+                          Icons.shopping_basket_outlined),
                     ],
                   ),
                 ),

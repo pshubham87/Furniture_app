@@ -16,6 +16,16 @@ class SignPage extends StatefulWidget {
 }
 
 class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
+  final formkey = GlobalKey<FormState>();
+  MovetoNext(BuildContext context) async {
+    if (formkey.currentState!.validate()) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Name()),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 2, vsync: this);
@@ -26,7 +36,7 @@ class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
       child: Scaffold(
         appBar: appColor(
           context,
-          "GET STARTED ",
+          "Sign In  ",
           () {},
         ),
         body: Padding(
@@ -43,37 +53,37 @@ class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
                     elevation: 3,
                     child: Container(
                       decoration: BoxDecoration(
+                          color: Colors.white,
                           border: Border.all(color: Colors.grey, width: 1),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20.0),
-                            bottomLeft: Radius.circular(20.0),
-                            topRight: Radius.circular(20.0),
-                            bottomRight: Radius.circular(20.0),
-                          )),
-                      child: TabBar(
-                        indicator: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Color.fromARGB(255, 187, 184, 184),
-                        ),
-                        controller: tabController,
-                        isScrollable: true,
-                        labelPadding: EdgeInsets.symmetric(horizontal: 40),
-                        tabs: [
-                          Tab(
-                            child: Text(
-                              "log in ",
-                              style: TextStyle(
-                                  color: Colors.purple,
-                                  fontWeight: FontWeight.w600),
-                            ),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Material(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        child: TabBar(
+                          indicator: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Color.fromARGB(255, 187, 184, 184),
                           ),
-                          Tab(
-                            child: Text("Sign Up",
+                          controller: tabController,
+                          isScrollable: true,
+                          labelPadding: EdgeInsets.symmetric(horizontal: 35),
+                          tabs: [
+                            Tab(
+                              child: Text(
+                                "Sign Up ",
                                 style: TextStyle(
                                     color: Colors.purple,
-                                    fontWeight: FontWeight.w600)),
-                          )
-                        ],
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                            Tab(
+                              child: Text("Log In",
+                                  style: TextStyle(
+                                      color: Colors.purple,
+                                      fontWeight: FontWeight.w600)),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -82,41 +92,65 @@ class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
               SizedBox(height: 60),
               Expanded(
                 child: TabBarView(controller: tabController, children: [
-                  Center(
-                    child: Text("Log In"),
-                  ),
                   Column(
                     children: [
-                      TextField(
-                        decoration:
-                            InputDecoration(hintText: " +0 (000) 000-00-000"),
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      TextField(
-                        decoration: InputDecoration(
-                            labelText: "password", hintText: "............"),
-                      ),
-                      SizedBox(
-                        height: 60,
-                      ),
-                      SizedBox(height: 30),
-                      uiButton(context, "Sign up", () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const Name()),
-                        );
-                      }),
-                      Text(
-                        "Forgot Your Password ?",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 15,
-                            color: Colors.purple),
-                        textAlign: TextAlign.center,
-                      )
+                      reuseTextfild("Name", "Name", Icons.person),
+                      const SizedBox(height: 20),
+                      reuseTextfild("Email", "email", Icons.email),
+                      const SizedBox(height: 20),
+                      reuseTextfild("password", "PAssword", Icons.password),
+                      const SizedBox(height: 20),
+                      uiButton(context, "Sign Up", () {}),
                     ],
+                  ),
+                  Form(
+                    key: formkey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Field Can't be Empty";
+                            }
+                          },
+                          decoration:
+                              InputDecoration(hintText: " +0 (000) 000-00-000"),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Password cant be empty";
+                            } else if (value.length < 6) {
+                              return "Password Length should be atleast 6";
+                            }
+                            // else if (!RegExp(r'@#%^&*').hasMatch(value)) {
+                            //   return "PasswordMust have a special Charactor";
+                            // }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                              labelText: "password", hintText: "............"),
+                        ),
+                        SizedBox(
+                          height: 60,
+                        ),
+                        SizedBox(height: 30),
+                        uiButton(context, "Log In", () {
+                          MovetoNext(context);
+                        }),
+                        Text(
+                          "Forgot Your Password ?",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 15,
+                              color: Colors.purple),
+                          textAlign: TextAlign.center,
+                        )
+                      ],
+                    ),
                   ),
                 ]),
               ),
@@ -126,4 +160,21 @@ class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
       ),
     );
   }
+}
+
+reuseTextfild(String Name, String hint, IconData Iconh) {
+  return TextFormField(
+    obscureText: true,
+    decoration: InputDecoration(
+      focusedBorder:
+          const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+      prefixIcon: Icon(Iconh),
+      labelText: Name,
+      hintText: hint,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    ),
+    keyboardType: TextInputType.visiblePassword,
+  );
 }

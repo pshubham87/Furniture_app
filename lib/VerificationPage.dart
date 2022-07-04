@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:task__furnitureapp/reusable/appcolor.dart';
 
 void main(List<String> args) {
@@ -39,10 +40,82 @@ class _VerificationState extends State<Verification> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Verificationreuse(),
-                    Verificationreuse(),
-                    Verificationreuse(),
-                    Verificationreuse(),
+                    SizedBox(
+                      width: 80,
+                      height: 80,
+                      child: TextFormField(
+                        onChanged: (value) {
+                          if (value.length == 1) {
+                            FocusScope.of(context).nextFocus();
+                          }
+                        },
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [LengthLimitingTextInputFormatter(1)],
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        decoration: Verificationreuse(),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 80,
+                      height: 80,
+                      child: TextFormField(
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [LengthLimitingTextInputFormatter(1)],
+                        onChanged: (value) {
+                          if (value.length == 1) {
+                            FocusScope.of(context).nextFocus();
+                          }
+                        },
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        decoration: Verificationreuse(),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 80,
+                      height: 80,
+                      child: TextFormField(
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [LengthLimitingTextInputFormatter(1)],
+                        onChanged: (value) {
+                          if (value.length == 1) {
+                            FocusScope.of(context).nextFocus();
+                          }
+                        },
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        decoration: Verificationreuse(),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 80,
+                      height: 80,
+                      child: TextFormField(
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [LengthLimitingTextInputFormatter(1)],
+                        onChanged: (value) {
+                          if (value.length == 1) {
+                            FocusScope.of(context).nextFocus();
+                          }
+                        },
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        decoration: Verificationreuse(),
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -69,26 +142,13 @@ class _VerificationState extends State<Verification> {
 }
 
 Verificationreuse() {
-  return SizedBox(
-    width: 80,
-    height: 80,
-    child: TextField(
-      textAlign: TextAlign.center,
-      keyboardType: TextInputType.number,
-      maxLength: 1,
-      style: TextStyle(
-        fontSize: 40,
-        fontWeight: FontWeight.bold,
+  return InputDecoration(
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+        borderRadius: BorderRadius.circular(0),
       ),
-      decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey, width: 1.0),
-            borderRadius: BorderRadius.circular(0),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey, width: 1.0),
-            borderRadius: BorderRadius.circular(0),
-          )),
-    ),
-  );
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey, width: 1.0),
+        borderRadius: BorderRadius.circular(0),
+      ));
 }

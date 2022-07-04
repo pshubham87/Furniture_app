@@ -38,21 +38,25 @@ appColor(
   Function onTap,
 ) {
   return AppBar(
-    toolbarHeight: 60,
-    elevation: 0,
-    flexibleSpace: Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [
-              Color.fromARGB(255, 255, 243, 71),
-              Color.fromARGB(255, 194, 71, 0),
-            ]),
+      toolbarHeight: 60,
+      elevation: 0,
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [
+                Color.fromARGB(255, 255, 243, 71),
+                Color.fromARGB(255, 194, 71, 0),
+              ]),
+        ),
       ),
-    ),
-    title: Center(child: Text(title, textAlign: TextAlign.center)),
-  );
+      title: Center(child: Text(title, textAlign: TextAlign.center)),
+      leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          }));
 }
 
 // UiButton(

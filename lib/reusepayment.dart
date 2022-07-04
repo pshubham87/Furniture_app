@@ -7,6 +7,7 @@ reusepayment(
   BuildContext context,
   String title,
   Function onTap,
+  IconData Iconh,
 ) {
   return Padding(
     padding: const EdgeInsets.only(
@@ -19,13 +20,14 @@ reusepayment(
           borderRadius: BorderRadius.circular(20),
           color: Color.fromRGBO(255, 255, 255, 1)),
       child: ListTile(
+        
         onTap: () {
           onTap();
         },
         title: Text(title),
         trailing: Icon(
-          Icons.arrow_right,
-          color: Colors.amber,
+          Iconh,
+          color: Colors.red,
         ),
       ),
     ),
