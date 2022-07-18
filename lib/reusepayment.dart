@@ -20,7 +20,6 @@ reusepayment(
           borderRadius: BorderRadius.circular(20),
           color: Color.fromRGBO(255, 255, 255, 1)),
       child: ListTile(
-        
         onTap: () {
           onTap();
         },

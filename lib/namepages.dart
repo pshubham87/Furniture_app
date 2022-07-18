@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:task__furnitureapp/VerificationPage.dart';
+import 'package:task__furnitureapp/description.dart';
 import 'package:task__furnitureapp/reusable/appcolor.dart';
 
 class Firstpages extends StatelessWidget {
@@ -22,13 +23,15 @@ class Firstpages extends StatelessWidget {
                       padding: EdgeInsets.only(top: 40),
                       child: CircleAvatar(
                         radius: (52),
-                        // backgroundColor: Colors.black,
                         backgroundImage:
                             AssetImage("assets/images/Profile.png"),
                       ),
                     ),
                   )
                 ],
+              ),
+              SizedBox(
+                height: 10,
               ),
               Text(
                 "Your Name",
@@ -74,7 +77,20 @@ class Firstpages extends StatelessWidget {
                         ),
                         reusemsg("Notification", Icons.notifications),
                         reusemsg("Account details", Icons.account_box),
-                        reusemsg("My Purches", Icons.shopping_cart),
+                        ListTile(
+                          leading: Icon(Icons.message,
+                              color: Color.fromARGB(255, 109, 102, 102)),
+                          title: Text('MY Purches',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w400)),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const description()),
+                            );
+                          },
+                        ),
                         reusemsg("Settings ", Icons.settings),
                       ],
                     ),

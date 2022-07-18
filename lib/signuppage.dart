@@ -126,9 +126,7 @@ class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
                             } else if (value.length < 6) {
                               return "Password Length should be atleast 6";
                             }
-                            // else if (!RegExp(r'@#%^&*').hasMatch(value)) {
-                            //   return "PasswordMust have a special Charactor";
-                            // }
+
                             return null;
                           },
                           decoration: InputDecoration(

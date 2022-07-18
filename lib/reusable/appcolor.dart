@@ -58,22 +58,3 @@ appColor(
             Navigator.pop(context);
           }));
 }
-
-// UiButton(
-//   context,
-//   String title,
-// ) {
-//   return MaterialButton(
-//     onPressed: () {},
-//     child: Text(
-//       title,
-//       style: TextStyle(
-//         color: Colors.white,
-//         fontWeight: FontWeight.w900,
-//         fontSize: 20,
-//       ),
-//     ),
-//     color: Colors.red[600],
-//     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-//   );
-// }

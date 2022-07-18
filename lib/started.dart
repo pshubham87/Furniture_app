@@ -18,20 +18,20 @@ class _MyStartState extends State<MyStart> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-                  Color.fromARGB(255, 255, 243, 71),
-                  Color.fromARGB(255, 194, 71, 0),
-                ],
-              ),
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Color.fromARGB(255, 255, 243, 71),
+                Color.fromARGB(255, 194, 71, 0),
+              ],
             ),
+          ),
+          child: SingleChildScrollView(
             child: Column(
               children: [
                 Padding(padding: EdgeInsets.only(top: 80)),
@@ -64,7 +64,7 @@ class _MyStartState extends State<MyStart> {
                     setState(() {
                       ChangeButton = true;
                     });
-                    await Future.delayed(Duration(seconds: 1));
+                    await Future.delayed(Duration(milliseconds: 800));
                     await Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -75,7 +75,7 @@ class _MyStartState extends State<MyStart> {
                   },
                   child: AnimatedContainer(
                     curve: Curves.linear,
-                    duration: Duration(seconds: 1),
+                    duration: Duration(milliseconds: 800),
                     height: 60,
                     width: ChangeButton ? 60 : 250,
                     alignment: Alignment.center,

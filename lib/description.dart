@@ -20,7 +20,7 @@ class _descriptionState extends State<description> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: appColor(context, "", () {}),
-        body: Container(
+        body: SingleChildScrollView(
           child: Column(
             children: [
               Center(
@@ -129,8 +129,10 @@ class _descriptionState extends State<description> {
                       child: Container(
                         height: 200,
                         width: 420,
-                        child: Text(
-                            "I watched a thunderstorm, far out over the sea. It began quietly, and with nothing visible except tall dark clouds and a rolling tide. I watched a thunderstorm, far out over the sea. It began quietly, and with nothing visible except tall dark clouds and a rolling tide.I watched a thunderstorm, far out over the sea. It began quietly, and with nothing visible except tall dark clouds and a rolling tideI watched a thunderstorm, far out over the sea. It began quietly, and with nothing visible except tall dark clouds and a rolling tide"),
+                        child: Center(
+                          child: Text(
+                              "I watched a thunderstorm, far out over the sea. It began quietly, and with nothing visible except tall dark clouds and a rolling tide. I watched a thunderstorm, far out over the sea. It began quietly, and with nothing visible except tall dark clouds and a rolling tide.I watched a thunderstorm, far out over the sea. It began quietly, and with nothing visible except tall dark clouds and a rolling tideI watched a thunderstorm, far out over the sea. It began quietly, and with nothing visible except tall dark clouds and a rolling tide"),
+                        ),
                       ),
                     )
                   ],

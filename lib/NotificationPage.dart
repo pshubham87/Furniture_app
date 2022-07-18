@@ -24,79 +24,78 @@ class _notifiState extends State<notifi> {
     return MaterialApp(
       home: Scaffold(
         appBar: appColor(context, "Notification", () {}),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 40),
-              child: Container(
-                height: 320,
-                width: MediaQuery.of(context).size.width * 0.8,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.redAccent),
-                    borderRadius: BorderRadius.circular(20)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ListView(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      children: [
-                        SwitchListTile(
-                          title: Titleuse("product updates"),
-                          subtitle:
-                              Text("furniture app,chaire , table ,and more.."),
-                          value: _value,
-                          onChanged: (value) {
-                            setState(() {
-                              _value = value;
-                            });
-                          },
-                        ),
-                        dividerreuse(),
-                        SwitchListTile(
-                          title: Titleuse("Comments"),
-                          subtitle:
-                              Text("furniture app,chaire , table ,and more.."),
-                          value: _toggle,
-                          onChanged: (value) {
-                            setState(() {
-                              _toggle = value;
-                            });
-                          },
-                        ),
-                        dividerreuse(),
-                        SwitchListTile(
-                          title: Titleuse("Offer Updates"),
-                          subtitle:
-                              Text("furniture app,chaire , table ,and more.."),
-                          value: _change,
-                          onChanged: (value) {
-                            setState(() {
-                              _change = value;
-                            });
-                          },
-                        ),
-                        dividerreuse(),
-                        SwitchListTile(
-                          title: Titleuse("Notifications"),
-                          subtitle:
-                              Text("furniture app,chaire , table ,and more.."),
-                          value: _chnge,
-                          onChanged: (value) {
-                            setState(() {
-                              _chnge = value;
-                            });
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 60, left: 50),
+            child: Column(
+              children: [
+                Container(
+                  height: 320,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.redAccent),
+                      borderRadius: BorderRadius.circular(20)),
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      SwitchListTile(
+                        title: Titleuse("product updates"),
+                        subtitle:
+                            Text("furniture app,chaire , table ,and more.."),
+                        value: _value,
+                        onChanged: (value) {
+                          setState(() {
+                            _value = value;
+                          });
+                        },
+                      ),
+                      dividerreuse(),
+                      SwitchListTile(
+                        title: Titleuse("Comments"),
+                        subtitle:
+                            Text("furniture app,chaire , table ,and more.."),
+                        value: _toggle,
+                        onChanged: (value) {
+                          setState(() {
+                            _toggle = value;
+                          });
+                        },
+                      ),
+                      dividerreuse(),
+                      SwitchListTile(
+                        title: Titleuse("Offer Updates"),
+                        subtitle:
+                            Text("furniture app,chaire , table ,and more.."),
+                        value: _change,
+                        onChanged: (value) {
+                          setState(() {
+                            _change = value;
+                          });
+                        },
+                      ),
+                      dividerreuse(),
+                      SwitchListTile(
+                        title: Titleuse("Notifications"),
+                        subtitle:
+                            Text("furniture app,chaire , table ,and more.."),
+                        value: _chnge,
+                        onChanged: (value) {
+                          setState(() {
+                            _chnge = value;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+                SizedBox(
+                  height: 40,
+                ),
+                uiButton(context, "Update setting", () {}),
+              ],
             ),
-            uiButton(context, "Update setting", () {})
-          ],
+          ),
         ),
       ),
     );
