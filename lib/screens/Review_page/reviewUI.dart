@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-import 'constant.dart';
+import 'constant_Review.dart';
 
 class ReviewUI extends StatelessWidget {
   final String image, name, comment;

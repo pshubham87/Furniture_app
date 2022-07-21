@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:task__furnitureapp/reusable/appcolor.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main(List<String> args) {
   runApp(notifi());
@@ -26,12 +27,12 @@ class _notifiState extends State<notifi> {
         appBar: appColor(context, "Notification", () {}),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(top: 60, left: 50),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
                 Container(
                   height: 320,
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.redAccent),
                       borderRadius: BorderRadius.circular(20)),
@@ -77,8 +78,10 @@ class _notifiState extends State<notifi> {
                       dividerreuse(),
                       SwitchListTile(
                         title: Titleuse("Notifications"),
-                        subtitle:
-                            Text("furniture app,chaire , table ,and more.."),
+                        subtitle: Text(
+                          "furniture app,chaire , table ,and more..",
+                          style: GoogleFonts.lato(),
+                        ),
                         value: _chnge,
                         onChanged: (value) {
                           setState(() {
@@ -90,7 +93,7 @@ class _notifiState extends State<notifi> {
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 30,
                 ),
                 uiButton(context, "Update setting", () {}),
               ],
@@ -114,6 +117,8 @@ dividerreuse() {
 Titleuse(String title) {
   return Text(
     title,
-    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+    style: GoogleFonts.encodeSans(
+      textStyle: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+    ),
   );
 }

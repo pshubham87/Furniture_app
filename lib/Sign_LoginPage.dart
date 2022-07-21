@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:task__furnitureapp/reusable/appcolor.dart';
-import 'package:task__furnitureapp/NamePage.dart';
+import 'package:task__furnitureapp/screens/Profile_Page/Profile_page.dart';
 
 void main() {
   runApp(const SignPage());
@@ -17,6 +17,8 @@ class SignPage extends StatefulWidget {
 
 class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
   final formkey = GlobalKey<FormState>();
+
+  bool hidepassword = true;
   MovetoNext(BuildContext context) async {
     if (formkey.currentState!.validate()) {
       Navigator.push(
@@ -30,6 +32,7 @@ class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 2, vsync: this);
     TabController(length: 2, vsync: this);
+
     return DefaultTabController(
       initialIndex: 1,
       length: 2,
@@ -40,7 +43,7 @@ class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
           () {},
         ),
         body: Padding(
-          padding: EdgeInsets.all(40.0),
+          padding: EdgeInsets.all(20.0),
           child: Column(
             children: [
               Center(
@@ -92,62 +95,77 @@ class _SignPageState extends State<SignPage> with TickerProviderStateMixin {
               SizedBox(height: 60),
               Expanded(
                 child: TabBarView(controller: tabController, children: [
-                  Column(
-                    children: [
-                      reuseTextfild("Name", "Name", Icons.person),
-                      const SizedBox(height: 20),
-                      reuseTextfild("Email", "email", Icons.email),
-                      const SizedBox(height: 20),
-                      reuseTextfild("password", "PAssword", Icons.password),
-                      const SizedBox(height: 20),
-                      uiButton(context, "Sign Up", () {}),
-                    ],
-                  ),
-                  Form(
-                    key: formkey,
+                  SingleChildScrollView(
                     child: Column(
                       children: [
-                        TextFormField(
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Field Can't be Empty";
-                            }
-                          },
-                          decoration:
-                              InputDecoration(hintText: " +0 (000) 000-00-000"),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        TextFormField(
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Password cant be empty";
-                            } else if (value.length < 6) {
-                              return "Password Length should be atleast 6";
-                            }
-
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                              labelText: "password", hintText: "............"),
-                        ),
-                        SizedBox(
-                          height: 60,
-                        ),
-                        SizedBox(height: 30),
-                        uiButton(context, "Log In", () {
-                          MovetoNext(context);
-                        }),
-                        Text(
-                          "Forgot Your Password ?",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 15,
-                              color: Colors.purple),
-                          textAlign: TextAlign.center,
-                        )
+                        reuseTextfild("Name", "Name", Icons.person),
+                        const SizedBox(height: 20),
+                        reuseTextfild("Email", "email", Icons.email),
+                        const SizedBox(height: 20),
+                        reuseTextfild("password", "PAssword", Icons.password),
+                        const SizedBox(height: 20),
+                        uiButton(context, "Sign Up", () {}),
                       ],
+                    ),
+                  ),
+                  SingleChildScrollView(
+                    child: Form(
+                      key: formkey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Field Can't be Empty";
+                              }
+                            },
+                            decoration: InputDecoration(
+                                hintText: " +0 (000) 000-00-000"),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          TextFormField(
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Password cant be empty";
+                              } else if (value.length < 6) {
+                                return "Password Length should be atleast 6";
+                              }
+
+                              return null;
+                            },
+                            obscureText: !hidepassword,
+                            decoration: InputDecoration(
+                                labelText: "password",
+                                hintText: "............",
+                                suffixIcon: IconButton(
+                                    onPressed: () {
+                                      // setState(() {
+                                      //   hidepassword = !hidepassword;
+                                      // });
+                                    },
+                                    icon: Icon(hidepassword
+                                        ? Icons.visibility_off
+                                        : Icons.visibility))),
+                          ),
+                          SizedBox(
+                            height: 60,
+                          ),
+                          SizedBox(height: 30),
+                          uiButton(context, "Log In", () {
+                            MovetoNext(context);
+                          }),
+                          Text(
+                            "Forgot Your Password ?",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 15,
+                                color: Colors.purple),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ]),

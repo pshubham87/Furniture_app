@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, sort_child_properties_last, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:task__furnitureapp/NamePage.dart';
+import 'package:task__furnitureapp/screens/Profile_Page/Profile_page.dart';
 
 Container uiButton(BuildContext context, String title, Function onTap) {
   return Container(

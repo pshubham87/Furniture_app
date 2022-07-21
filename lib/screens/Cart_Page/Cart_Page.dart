@@ -4,31 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:task__furnitureapp/reusable/appcolor.dart';
 
 void main(List<String> args) {
-  runApp(MyBaskets());
+  runApp(increment());
 }
 
-class MyBaskets extends StatefulWidget {
-  const MyBaskets({Key? key}) : super(key: key);
+class increment extends StatefulWidget {
+  const increment({Key? key}) : super(key: key);
 
   @override
-  State<MyBaskets> createState() => _MyBasketsState();
+  State<increment> createState() => _incrementState();
 }
 
-class _MyBasketsState extends State<MyBaskets> {
-  int _itemCount = 1;
-  // int _counter = 0;
+class _incrementState extends State<increment> {
+  int _counter = 0;
 
-  // void _MyBasketsCounter() {
-  //   setState(() {
-  //     _counter++;
-  //   });
-  // }
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
 
-  // void _decrementCounter() {
-  //   setState(() {
-  //     _counter--;
-  //   });
-  // }
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
 
   List<String> Price = [
     "\$775",
@@ -54,8 +53,37 @@ class _MyBasketsState extends State<MyBaskets> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: appColor(context, 'MyBaskets', () {}),
-        body: Center(
+        appBar: AppBar(
+          toolbarHeight: 80,
+          elevation: 0,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [
+                    Color.fromARGB(255, 255, 243, 71),
+                    Color.fromARGB(255, 194, 71, 0),
+                  ]),
+            ),
+          ),
+          title: Container(
+            width: MediaQuery.of(context).size.width - 30,
+            height: 50,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(20)),
+            child: Center(
+              child: TextField(
+                decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                    hintText: 'Search...',
+                    border: InputBorder.none),
+              ),
+            ),
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -79,38 +107,29 @@ class _MyBasketsState extends State<MyBaskets> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
+                                  IconButton(
+                                    onPressed: _decrementCounter,
+                                    icon: Icon(Icons.remove),
+                                  ),
+                                  Text(
+                                    '$_counter',
+                                  ),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  InkWell(
+                                      onTap: () {
+                                        _incrementCounter();
+                                      },
+                                      child: Icon(Icons.add)),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
                                   Text(
                                     Price[index].toString(),
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 20),
-                                  ),
-                                  SizedBox(
-                                    width: 50,
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.remove),
-                                    onPressed: () => setState(() =>
-                                        _itemCount != 0
-                                            ? _itemCount--
-                                            : _itemCount),
-                                  ),
-                                  Text(
-                                    _itemCount.toString(),
-                                  ),
-                                  SizedBox(
-                                    height: 30,
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.add),
-                                    onPressed: () => setState(
-                                      () => _itemCount != 0
-                                          ? _itemCount++
-                                          : _itemCount,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 15,
                                   ),
                                 ],
                               ),
