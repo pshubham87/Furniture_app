@@ -1,11 +1,9 @@
-// @dart=2.9
 import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:task__furnitureapp/screens/Basket_Page/My_Baskets.dart';
 import 'package:task__furnitureapp/screens/Notification_Page/Notification_Page.dart';
 import 'package:task__furnitureapp/screens/Card_Page/Atmcard_Page.dart';
 import 'package:task__furnitureapp/screens/Payment_page/Payment_Page.dart';
-
 import 'package:task__furnitureapp/screens/Verification_page/Verification_Page.dart';
 import 'package:task__furnitureapp/screens/Description_page/Description_Page.dart';
 import 'package:task__furnitureapp/screens/Filter_Page/filter_Page.dart';
